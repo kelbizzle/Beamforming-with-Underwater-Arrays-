@@ -1,0 +1,21 @@
+Using this file to document outstanding things we need to do before next test day:
+
+1. Material Needs
+    a. Speakers for noisy channels
+    b. Batteries
+
+2. Setup
+    a. Chris is working on setting up RPI loops for autonomy. This is easy enough, we just need to decide all the this testing possibilities. Do we want the noisy channels to be purely WGN? Do we want them to also have characteristics?
+    b. We should create a test day plan and prepopulate what we can, so we aren't doing that in real time. If we get the set up going autonomously, really all we needs to do is move the source every 10-15 minutes and capture the time so we know where the speaker was supposed to be. Something that might help is getting a 
+
+
+3. Things we may need on test day
+    a. Are we going to invite additional support from 201? We should talk to Wage about this again. 
+    b. I (Chris) can bring a tent cover thing and a couple camping chairs. 
+    c. Other things:
+        i. Cooler and snacks/drinks
+        ii. Walkie Talkies
+        iii. Extension Cord(s) and surgep protector
+    
+4. 
+

@@ -1,0 +1,47 @@
+Setting up the Raspberry Pi
+
+Installing the OS
+
+    1. Configuring SD:
+        a. Using the RPI Imager install Raspberry Pi OS Lite. We're using this because it's a faster install and doesn't require GUI. 
+        b. In the custom settings we need to generate names that make sense so we can keept track of what's what.
+            i. For the Source:
+                a. Name/User/Password: source/source/source
+            ii. For the Noisy Channel X:
+                b. Name/User/Password: noisex/noisex/noisex
+
+Setting Up The Directories
+
+    1. Transferring Files:
+        a. I find the easiest way is to use the SSH protocol built on mac.
+            i. SSH to the RPI: run ssh name@user.local. Enter password when prompted.
+        b. Enable SSH. Run sudo raspi-config. Under Interface Options, enable SSH and exit.
+        c. Transferring Mac -> Pi:
+            i. Run scp /path/on/mac/file.txt name@user.local:~/filepath
+        d. Transferring Pi -> Mac:
+            i. Run scp name@user.local:~/filepath .  <- PERIOD IS REQUIRED, COPIES FILE TO CURRENT DIR ON MAC
+        e. To copy entire folder, modify to run scp -r //filepath <-RUNS RECURSIVELY OVER FOLDER
+
+    2. Run on Boot:
+        a. Now that we have the files available on the RPI, we need to make it run on boot since we're not going to be actually connecting to it. 
+
+        b. Create a service routine to run the loop control. 
+        Run the following: sudo nano /etc/systemd/system/tone_loop.service
+
+        c. Within this window, copy the text from BootRun.txt and save. In the EX, the RPI is named source. This needs to be changed depending on which RPI is connected.
+
+        d. Run the following commands:
+
+        sudo systemctl daemon-reload
+        sudo systemctl enable tone_loop.service
+        sudo systemctl start tone_loop.service
+        sudo systemctl status tone_loop.service
+
+        e. Now, assuming the last line shows the status as active/enabled, then the loop control will run on boot after the OS is running. Verify this against the checking service enabled.png file
+
+    
+
+
+    
+
+

@@ -1,0 +1,14 @@
+[Unit]
+Description=Autonomous Tone Looper Service
+After=sound.target
+
+[Service]
+Type=simple
+User=source
+WorkingDirectory=/home/source/DSP/python
+ExecStart=/usr/bin/python3 /home/source/DSP/python/loopcontrol.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
