@@ -40,6 +40,28 @@ Setting Up The Directories
         e. Now, assuming the last line shows the status as active/enabled, then the loop control will run on boot after the OS is running. Verify this against the checking service enabled.png file
 
     
+Configuring The DigiAmp +
+
+    1. This only takes a few commend lines to enable:
+
+        a. Open the configuration file: sudo nano /boot/firmware/config.txt
+        b. Comment out the line: #dtparam=audio=on
+        c. At the bottom, add the following line to enable the overlay and unmute it: dtoverlay=rpi-digiampplus unmute_amp
+        d. Now, we'll set the digiamp card as default:
+            i. create a configuration executable to force the digiamp as default: sudo nano /etc/asound.conf
+            ii. paste the following:
+
+                pcm.!default {
+                    type hw
+                    card 0
+                }
+
+                ctl.!default {
+                    type hw
+                    card 0
+                }
+        e. Run sudo reboot to restart the OS
+        f. To verify, run aplay -l. The digiamp should show as card 0.
 
 
     
