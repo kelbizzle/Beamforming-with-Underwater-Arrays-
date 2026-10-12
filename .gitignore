@@ -1,0 +1,10 @@
+# Ignore Virtual environment folder specific to my mac
+venv/
+
+# Ignore Python's automatic caching folders
+_pychache_/
+*.pyc
+
+# Ignore Mac system files
+.DS_Store
+
