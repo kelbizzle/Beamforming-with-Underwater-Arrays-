@@ -115,7 +115,7 @@ for angle in tqdm(rad_angles2scan, desc="Scanning Angles", unit="angle"):
 
     delayed_hydro_data = apply_time_shifts(x_data, integer_shifts)
     summed_coherence = np.sum(delayed_hydro_data, axis=0) # collapses rows and adds sample value at each location from all columns of data
-    print('summed: ', type(summed_coherence))
+    #print('summed: ', type(summed_coherence))
     
     # roots mean square (RMS) power calculates the average signal energy 
     # the angle that produces the largest RMS output = source location
