@@ -12,9 +12,9 @@
 # * Advancement in time equates to a negative shift value in samples 
 
 # * Delay (in time) = dist_between_sensors*cos(theta_rad)/speed_sound 
-# --> using cosine assumes horizonatl azimuth convention; cos(90 degrees) = 0 ==> zero delay for broadside
+# --> using cosine assumes horizontal azimuth convention; cos(90 degrees) = 0 ==> zero delay for broadside
 # * Delays: H1 = 0, H2 = dt, H3 = 2dt, H4 = 3dt, ...
-# * Shift later sensors by sample ampunts to build constructive interference for particular angle
+# * Shift later sensors by sample amounts to build constructive interference for particular angle
 # * Subtraction = advancement in time
 
 # Example:
@@ -29,7 +29,7 @@
 # * For TD processing, integer sample shifts are used. This means not all indiviudal angles can be resolved
 #   - For Fs = 44.1 kHz and d = 0.3 m, each integer sample value corresponds to an approx. range of 9 degrees.
 #   - Thus there is limited frequency resolution.
-#   - To change this you would have to increase distance between sensors (but watch out for spatial aliasing!
+#   - To change this you would have to increase distance between sensors (but watch out for spatial aliasing!)
 #       --> Larger aperature length creates narrower main lobes.
 #   - Or increase sampling rate to decrease the range of degrees associated with each integer sample value.
 
@@ -40,7 +40,6 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm # used to show progress bar in terminal while script is running
 
 # read in data files
-
 def assemble_data_matrix(num_sensors, path_name):
     '''
     Function Purpose: assemble matrix of hydrophone data where row = hydrophone
@@ -65,7 +64,8 @@ def assemble_data_matrix(num_sensors, path_name):
     x_data = np.vstack(sensor_data_channels)
     return fs, x_data
 
-fs, x_data = assemble_data_matrix(8,"/Users/scooby/Downloads/Mason/Research/Pool_testing_SD26/tone1_18/18-Jul-2026 12_03_31ch")
+# Call function
+fs, x_data = assemble_data_matrix(8,"path_to_file_name")
 
 # *** Time Domain Beamforming ***
 def apply_time_shifts(x_data, integer_shifts):
