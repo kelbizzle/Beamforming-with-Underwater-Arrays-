@@ -124,7 +124,7 @@ for angle in tqdm(rad_angles2scan, desc="Scanning Angles", unit="angle"):
 
 def write_beamformed__audio(summed_coherence, angle, fs):
     '''
-    Function purpose: write out beanformed data as .wav file. Would be helpful for data w/ interferers.
+    Function purpose: write out beamformed data as .wav file. Would be helpful for data w/ interferers.
 
     Inputs:
             name: datatype, description
