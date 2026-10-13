@@ -122,7 +122,7 @@ for angle in tqdm(rad_angles2scan, desc="Scanning Angles", unit="angle"):
     rms_val = np.sqrt(np.mean(summed_coherence**2))
     rms_results[np.rad2deg(angle)] = rms_val
 
-def write_beamformed__audio(summed_coherence, angle):
+def write_beamformed__audio(summed_coherence, angle, fs):
     '''
     Function purpose: write out beanformed data as .wav file. Would be helpful for data w/ interferers.
 
@@ -130,11 +130,12 @@ def write_beamformed__audio(summed_coherence, angle):
             name: datatype, description
             summed_coherence: 1d array, beamformed data matrix
             angle: radian, value for desired scanned angle
+            fs: float, sampling rate
     Outputs:
             name: datatype, description
             no return value, writes file directly to current working directory
     '''
-    file_name = "beamformed_data_" + str(np.rad2deg(angle))
+    file_name = "beamformed_data_" + str(np.rad2deg(angle) + ".wav")
     wavfile.write(file_name, fs, summed_coherence.astype(np.float32))
     
 # Creating plot to show various RMS power values per angle scanned
@@ -147,15 +148,15 @@ plt.plot(angles, power, color='m', linewidth=2, label="Beamforming Output")
 true_angle = 130
 resolution_half_width = 9
 
-# laytex hack for show stacked + and -: $\pm$
-# for degree symbol: ^\circ$C or \degree (must be r string if not using f strings) or pass in unicode: \u00B0
-plt.axvline(
+# Laytex hack for showing stacked + and - is $\pm$
+# For degree symbol: ^\circ$C or \degree (must be r string if not using f strings) or pass in unicode: \u00B0
+plt.axvline( # add vertical line through "true" expected angle
     x=true_angle,
     color='b',
     linestyle='--',
     label=f'True Source ({true_angle}\u00B0)',
 )
-plt.axvspan(
+plt.axvspan( # adds a rectangular spanning line over region of angle resolution ambiguity 
     true_angle - resolution_half_width,
     true_angle + resolution_half_width,
     color='blue',
