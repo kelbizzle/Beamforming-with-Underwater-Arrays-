@@ -59,14 +59,13 @@ def assemble_data_matrix(num_sensors, path_name):
     '''
     sensor_data_channels = []
     for sensor in range(num_sensors):
-        fs, x = wavfile.read(path_name + str(sensor+1) + ".wav")
+        fs, x = wavfile.read(path_name + "Ch" + str(sensor+1) + ".wav")
         sensor_data_channels.append(x)
     x_data = np.vstack(sensor_data_channels)
     return fs, x_data
 
 # Call function
-fs, x_data = assemble_data_matrix(8,"path_to_file_name")
-
+fs, x_data = assemble_data_matrix(8,"/Users/scooby/Downloads/Mason/M-Fall-26/Beamforming-with-Underwater-Arrays-/")
 # *** Time Domain Beamforming ***
 def apply_time_shifts(x_data, integer_shifts):
     '''
@@ -145,8 +144,8 @@ power = list(rms_results.values())
 plt.figure(figsize=(10, 6))
 plt.plot(angles, power, color='m', linewidth=2, label="Beamforming Output")
 
-true_angle = 130
-resolution_half_width = 9
+true_angle = 120
+resolution_half_width = 14
 
 # Laytex hack for showing stacked + and - is $\pm$
 # For degree symbol: ^\circ$C or \degree (must be r string if not using f strings) or pass in unicode: \u00B0
@@ -161,7 +160,7 @@ plt.axvspan( # adds a rectangular spanning line over region of angle resolution 
     true_angle + resolution_half_width,
     color='blue',
     alpha=0.3,
-    label='Array Resolution Window ($\pm 9^\circ$)',
+    label='Array Resolution Window ($\pm 14^\circ$)',
 )
 plt.xlabel("Scan Angle (degrees)")
 plt.ylabel("RMS Power")
